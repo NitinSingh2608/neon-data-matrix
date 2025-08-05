@@ -135,7 +135,7 @@ All colors MUST be HSL. Glassmorphism & neon cyberpunk aesthetic.
   }
 
   body {
-    @apply bg-background text-foreground overflow-hidden;
+    @apply bg-background text-foreground;
     background: radial-gradient(ellipse at bottom, hsl(220 15% 8%) 0%, hsl(220 15% 4%) 100%);
     min-height: 100vh;
   }

@@ -2,41 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Cyberpunk Analytics Dashboard Design System
+All colors MUST be HSL. Glassmorphism & neon cyberpunk aesthetic.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Cyberpunk Dark Theme */
+    --background: 220 15% 6%;
+    --foreground: 180 100% 90%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Glass Cards with Dark Backdrop */
+    --card: 220 15% 8%;
+    --card-foreground: 180 100% 90%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 15% 10%;
+    --popover-foreground: 180 100% 90%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Neon Cyan Primary */
+    --primary: 180 100% 50%;
+    --primary-foreground: 220 15% 6%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Glass Secondary */
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 180 100% 80%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Glass Effect */
+    --muted: 220 15% 10%;
+    --muted-foreground: 180 30% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Neon Purple Accent */
+    --accent: 280 100% 70%;
+    --accent-foreground: 220 15% 6%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Neon Red Destructive */
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 220 15% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Glass Borders */
+    --border: 180 50% 25%;
+    --input: 220 15% 15%;
+    --ring: 180 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Cyberpunk Custom Colors */
+    --neon-cyan: 180 100% 50%;
+    --neon-purple: 280 100% 70%;
+    --neon-pink: 320 100% 70%;
+    --neon-green: 120 100% 50%;
+    --neon-orange: 30 100% 60%;
+    --neon-blue: 240 100% 70%;
+    
+    /* Glass Effect Colors */
+    --glass-bg: 220 15% 8%;
+    --glass-border: 180 50% 25%;
+    --glass-highlight: 180 100% 90%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--neon-cyan)) 0%, hsl(var(--neon-purple)) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--neon-purple)) 0%, hsl(var(--neon-pink)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--neon-green)) 0%, hsl(var(--neon-cyan)) 100%);
+    --gradient-warning: linear-gradient(135deg, hsl(var(--neon-orange)) 0%, hsl(var(--neon-pink)) 100%);
+    
+    /* Shadows and Glows */
+    --shadow-neon-cyan: 0 0 20px hsl(var(--neon-cyan) / 0.5);
+    --shadow-neon-purple: 0 0 20px hsl(var(--neon-purple) / 0.5);
+    --shadow-glass: 0 8px 32px hsl(220 15% 0% / 0.4);
+    --shadow-elevated: 0 12px 40px hsl(220 15% 0% / 0.6);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +135,73 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-hidden;
+    background: radial-gradient(ellipse at bottom, hsl(220 15% 8%) 0%, hsl(220 15% 4%) 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card Effect */
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-xl border border-glass-border rounded-lg;
+    background: linear-gradient(135deg, hsl(var(--glass-bg) / 0.4) 0%, hsl(var(--glass-bg) / 0.1) 100%);
+    box-shadow: var(--shadow-glass);
+  }
+  
+  /* Neon Glow Effects */
+  .neon-glow-cyan {
+    box-shadow: var(--shadow-neon-cyan);
+  }
+  
+  .neon-glow-purple {
+    box-shadow: var(--shadow-neon-purple);
+  }
+  
+  /* Hover Animations */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Pulse Animation */
+  .pulse-glow {
+    @apply animate-pulse;
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
+  }
+  
+  /* Cyberpunk Button */
+  .cyber-button {
+    @apply relative overflow-hidden bg-transparent border border-primary text-primary;
+    @apply transition-all duration-300 ease-out;
+    background: linear-gradient(45deg, transparent 30%, hsl(var(--primary) / 0.1) 50%, transparent 70%);
+  }
+  
+  .cyber-button:hover {
+    @apply text-primary-foreground;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-neon-cyan);
+  }
+  
+  .cyber-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    @apply transform -translate-x-full transition-transform duration-700;
+  }
+  
+  .cyber-button:hover::before {
+    @apply translate-x-full;
   }
 }

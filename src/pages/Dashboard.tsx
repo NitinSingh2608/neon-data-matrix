@@ -9,7 +9,7 @@ import { Users, Package, DollarSign, TrendingUp, Activity, Target } from 'lucide
 import { useToast } from '@/hooks/use-toast';
 import { Skeleton } from '@/components/ui/skeleton';
 
-const GOOGLE_SHEETS_URL = "https://docs.google.com/spreadsheets/d/1bF6L4a0uI1cPXpKjYZYWR-kdSwYP1hnqse1CzfzAw_Y/export?format=csv";
+const GOOGLE_SHEETS_URL = "https://docs.google.com/spreadsheets/d/18abfzA-icdzsf5xrU0myk_SLzSCC-ff3voy6nFdwbnI/export?format=csv";
 
 const Dashboard = () => {
   const { data, loading, error, refetch } = useGoogleSheets(GOOGLE_SHEETS_URL);

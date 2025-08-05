@@ -20,7 +20,7 @@ export const RevenueChart = ({ data }: RevenueChartProps) => {
         <div className="glass-card p-4 border-glass-border">
           <p className="text-foreground font-medium">{label}</p>
           <p className="text-neon-cyan">
-            Revenue: ${payload[0].value?.toLocaleString()}
+            Revenue: ₹{payload[0].value?.toLocaleString()}
           </p>
         </div>
       );
@@ -41,7 +41,7 @@ export const RevenueChart = ({ data }: RevenueChartProps) => {
           <YAxis 
             stroke="hsl(var(--muted-foreground))"
             fontSize={12}
-            tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+            tickFormatter={(value) => `₹${(value / 1000).toFixed(0)}k`}
           />
           <Tooltip content={<CustomTooltip />} />
           <Line 

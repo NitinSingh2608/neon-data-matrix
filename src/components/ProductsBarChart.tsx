@@ -23,7 +23,7 @@ export const ProductsBarChart = ({ data }: ProductsBarChartProps) => {
             Products: {payload[0].value}
           </p>
           <p className="text-neon-cyan">
-            Revenue: ${payload[1]?.value?.toLocaleString()}
+            Revenue: ₹{payload[1]?.value?.toLocaleString()}
           </p>
         </div>
       );

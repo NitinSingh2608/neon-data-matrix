@@ -100,7 +100,7 @@ const Dashboard = () => {
               />
               <MetricCard
                 title="Total Revenue"
-                value={`$${totalRevenue.toLocaleString()}`}
+                value={`₹${totalRevenue.toLocaleString()}`}
                 icon={<DollarSign className="h-6 w-6 text-neon-green" />}
                 trend={{ value: 15.3, isPositive: true }}
                 className="animate-fade-up"
